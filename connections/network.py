@@ -1,13 +1,19 @@
 import speedtest
 
-
 def check_internet_speed():
-    st = speedtest.Speedtest()
-    st.get_best_server()
+    try:
+        st = speedtest.Speedtest()
+        st.get_best_server()
 
-    download_mbps = st.download() / 1_000_000
-    upload_mbps = st.upload() / 1_000_000
-    ping_ms = st.results.ping
+        download_mbps = st.download() / 1_000_000
+        upload_mbps = st.upload() / 1_000_000
+        ping_ms = st.results.ping
+
+    except Exception as e:
+        print(f"❌ Failed to retrieve speedtest data: {e}")
+        download_mbps = 0
+        upload_mbps = 0
+        ping_ms = 0
 
     print(f"📥 Download: {download_mbps:.2f} Mbps")
     print(f"📤 Upload: {upload_mbps:.2f} Mbps")
@@ -30,7 +36,6 @@ def check_internet_speed():
         "ping_ms": ping_ms,
         "suitable": is_suitable
     }
-
 
 if __name__ == "__main__":
     result = check_internet_speed()
