@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a685faf1-95cf-4246-b9b3-606825f70ad4" name="Changes" comment="add txt">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/PythonProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PythonProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/connections/network.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/connections/network.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/data/txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/data/data_search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/data/data_search.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/data/data_search.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,29 +71,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.configProject.executor": "Run",
-    "Python.data_search.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.metatrader (1).executor": "Run",
-    "Python.metatrader.executor": "Run",
-    "Python.network.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "sprint-01",
-    "last_opened_file_path": "C:/Users/igorp/Documents/GitHub/TraderIA",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.configProject.executor&quot;: &quot;Run&quot;,
+    &quot;Python.data_search.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.metatrader (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.metatrader.executor&quot;: &quot;Run&quot;,
+    &quot;Python.network.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;sprint-01&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/igorp/Documents/GitHub/TraderIA&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\perig\OneDrive\Documentos\GitHub\TraderIA\app\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.data_search">
+  <component name="RunManager" selected="Python.metatrader (1)">
     <configuration name="data_search" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject" />
       <option name="ENV_FILES" value="" />
@@ -210,9 +213,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.data_search" />
         <item itemvalue="Python.metatrader (1)" />
         <item itemvalue="Python.network" />
+        <item itemvalue="Python.data_search" />
         <item itemvalue="Python.metatrader" />
         <item itemvalue="Python.main" />
       </list>
