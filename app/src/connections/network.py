@@ -2,6 +2,7 @@ import os
 import speedtest
 from pathlib import Path
 from dotenv import load_dotenv
+import sys
 
 ROOT_DIR = Path(__file__).resolve()
 while ROOT_DIR != ROOT_DIR.parent:
@@ -12,7 +13,6 @@ while ROOT_DIR != ROOT_DIR.parent:
     ROOT_DIR = ROOT_DIR.parent
 else:
     print("⚠️ No .env file found — defaults will be used.\n")
-
 
 MIN_DOWNLOAD = float(os.getenv("MIN_DOWNLOAD_Mbps", 100))
 MIN_UPLOAD = float(os.getenv("MIN_UPLOAD_Mbps", 70))
@@ -37,16 +37,13 @@ def check_internet_speed():
     print(f"📤 Upload: {upload_mbps:.2f} Mbps (min required: {MIN_UPLOAD})")
     print(f"🏓 Ping: {ping_ms} ms (max allowed: {MAX_PING})")
 
-    if download_mbps < MIN_DOWNLOAD:
-        print(f"⚠️ Warning: Download speed below {MIN_DOWNLOAD} Mbps")
-    if upload_mbps < MIN_UPLOAD:
-        print(f"⚠️ Warning: Upload speed below {MIN_UPLOAD} Mbps")
-    if ping_ms > MAX_PING:
-        print(f"⚠️ Warning: Ping higher than {MAX_PING} ms")
-
     is_suitable = download_mbps >= MIN_DOWNLOAD and upload_mbps >= MIN_UPLOAD and ping_ms <= MAX_PING
-    status_emoji = "✅" if is_suitable else "❌"
-    print(f"{status_emoji} Connection suitable for large-scale system: {is_suitable}")
+
+    if not is_suitable:
+        print(f"❌ Connection does not meet the required standards. Exiting program.")
+        sys.exit(1)  # encerra o programa
+
+    print(f"✅ Connection suitable for large-scale system.")
 
     return {
         "download_mbps": download_mbps,
