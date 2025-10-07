@@ -12,13 +12,11 @@ else:
     print("⚠️ No .env file found — defaults will be used.\n")
 
 class Config:
-    """ Environment configuration class """
 
     PROJECT_NAME = os.getenv("PROJECT_NAME", "TraderIA")
     ENVIRONMENT = os.getenv("ENVIRONMENT", "development")
 
 def check_folder_structure():
-    """ Verify project folder structure """
     print("📁 Checking folder structure...\n")
 
     base_path = ROOT_DIR / "app" / "src"
@@ -52,7 +50,6 @@ def check_folder_structure():
         return True
 
 def check_requirements():
-    """ Verify that all packages from requirements.txt are installed """
     print("📦 Checking Python dependencies...\n")
 
     req_path = ROOT_DIR / "requirements.txt"
@@ -78,7 +75,6 @@ def check_requirements():
         return True
 
 def system_check():
-    """ Run full environment verification """
     print(f"\n🚀 Starting {Config.PROJECT_NAME} environment check...\n")
 
     folders_ok = check_folder_structure()
