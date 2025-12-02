@@ -1,0 +1,57 @@
+database:
+  host: "localhost"
+  user: "root"
+  password: "Igorpro2020#@#"
+  name: "finance_ai"
+
+data_sources:
+  provider: "yahoo"
+  interval: "1m"
+  history_limit: 1000
+  news_api_key: 18785311578c426eb6ceeb05f50838e1
+  symbols:
+    - PETR4
+    - VALE3
+    - ITUB4
+    - BBDC4
+    - ABEV3
+    - BBAS3
+    - RENT3
+    - MGLU3
+    - WEGE3
+    - GGBR4
+    - SANB11
+    - B3SA3
+    - LREN3
+    - SUZB3
+    - EMBJ3
+    - BHIA3
+    - HYPE3
+    - RADL3
+    - CVCB3
+    - EQTL3
+
+model:
+  type: "LSTM"
+  window_size: 60
+  epochs: 20
+  batch_size: 32
+
+recommendation:
+  buy_threshold: 0.002
+  sell_threshold: -0.002
+
+logging:
+  level: "INFO"
+  save_to_mysql: true
+  save_to_file: true
+  file_path: "logs/app.log"
+
+api:
+  port: 8080
+  enable_auth: false
+
+app:
+  version: 0.0.0_Development
+  time_development: 0h
+  Authors: ["Igor Pieralini"]
