@@ -1,0 +1,10 @@
+database:
+  host: "localhost"
+  user: "root"
+  password: "Igorpro2020#@#"
+  database: "traderia"
+  port: 3306
+
+logging:
+  path: "logs/"
+  level: "INFO"
