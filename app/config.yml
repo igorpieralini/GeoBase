@@ -1,0 +1,37 @@
+database:
+  host: "localhost"
+  user: "root"
+  password: "Igorpro2020#@#"
+  database: "traderia"
+  port: 3306
+
+logging:
+  path: "logs/"
+  level: "INFO"
+
+news:
+  provider: "rss"
+  newsapi:
+    base_url: "https://newsapi.org/v2"
+    api_key_env: "18785311578c426eb6ceeb05f50838e1"
+    default_country: "br"
+    default_language: "pt"
+    default_category: "business"
+    page_size: 20
+
+  rss:
+    default_country: "br"
+    default_language: "pt"
+    default_category: "business"
+    page_size: 20
+
+  sample_on_start: false
+
+companies_import:
+  import_on_start: false
+  wiki_url: "https://en.wikipedia.org/wiki/List_of_companies_listed_on_B3"
+  exchange_code: "B3"
+  limit: 10
+
+locales_import:
+  import_on_start: true

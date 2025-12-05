@@ -1,0 +1,7 @@
+mysql-connector-python
+PyYAML
+requests
+pycountry
+feedparser
+beautifulsoup4
+yfinance
