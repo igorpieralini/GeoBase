@@ -31,8 +31,6 @@ app/
 ---
 
 ## ⚙ Key Features
-- 🗄 Auto database and tables generation
-- 🔥 Colored logging with execution monitoring
 - 🔌 Ready foundation for future API expansion
 
 ---
