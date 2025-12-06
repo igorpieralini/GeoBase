@@ -1,4 +1,4 @@
-# 🚀 Geo Base
+# 🌍 Geo Base
 API built with **Python + MySQL** for storing **countries, states, and cities**, featuring automatic database creation and a modular architecture.
 
 ---
