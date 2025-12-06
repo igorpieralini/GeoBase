@@ -31,7 +31,6 @@ app/
 ---
 
 ## ⚙ Key Features
-- 🌍 Automatic import of countries, states and cities
 - 🗄 Auto database and tables generation
 - 🔥 Colored logging with execution monitoring
 - 🔌 Ready foundation for future API expansion
