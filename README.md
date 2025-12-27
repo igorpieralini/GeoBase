@@ -33,8 +33,6 @@ app/
 
 ## ⚙️ Features
 - 🌍 **Auto-import** countries, states, and cities
-- 📦 **Simple structure** - only essential dependencies
-- 📊 **Clean database** - no timestamps, minimal fields
 - 🔌 **API ready** - foundation for geographic services
 
 ---
