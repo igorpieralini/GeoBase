@@ -1,8 +1,8 @@
 database:
-  host: "localhost"
-  user: "root"
-  password: ""
-  database: "peoplecore"
+  host: "your_host"
+  user: "your_user"
+  password: "your_password"
+  database: "your_db"
   port: 3306
 
 locales_import:
