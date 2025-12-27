@@ -1,19 +1,9 @@
 database:
   host: "localhost"
   user: "root"
-  password: "your_password"
-  database: "your_database"
+  password: ""
+  database: "peoplecore"
   port: 3306
-
-logging:
-  path: "logs/"
-  level: "INFO"
-
-news:
-  provider: "rss"
-  newsapi:
-    base_url: "https://newsapi.org/v2"
-    api_key_env: "your_api_key"
 
 locales_import:
   import_on_start: true

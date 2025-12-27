@@ -1,47 +1,59 @@
 # 🌍 Geo Base
-API built with **Python + MySQL** for storing **countries, states, and cities**, featuring automatic database creation and a modular architecture.
+Simple **Python + MySQL** database for storing **countries, states, and cities** with automatic data import from external APIs.
 
 ---
 
-## 🧩 Quick Installation
+## 🚀 Quick Start
 ```bash
 git clone https://github.com/your-user/GeoBase.git
 cd GeoBase
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
-Edit `app/config.yml`, then run:
-```bash
-python .\app\
-```
+
+**Configure database:**
+1. Copy `app/config.yml.example` to `app/config.yml`
+2. Edit database credentials in `app/config.yml`
+3. Run: `python app.py`
 
 ---
 
-## 📂 Project Structure
+## 📁 Project Structure
 ```
 app/
-├── __main__.py
-├── main.py
+├── main.py              # Main application
+├── config.yml           # Database config (not in git)
 ├── database/
-├── services/
-└── utils/
+│   ├── tables/          # Table schemas
+│   └── queries/         # Data import logic
+├── services/            # Business logic
+└── utils/               # Configuration helpers
 ```
 
 ---
 
-## ⚙ Key Features
-- 🔌 Ready foundation for future API expansion
+## ⚙️ Features
+- 🌍 **Auto-import** countries, states, and cities
+- 📦 **Simple structure** - only essential dependencies
+- 📊 **Clean database** - no timestamps, minimal fields
+- 🔌 **API ready** - foundation for geographic services
 
 ---
 
-## 🧭 Technology & License
-
-| 📦 Technology | 📄 License |
-|--------------|------------|
-| 🐍 Python 3.11+ | MIT 🔓 |
-| 🗄 MySQL | MIT 🔓 |
+## 📊 Database Schema
+```sql
+countries: id, name, code
+states:    id, country_id, name, code  
+cities:    id, state_id, name
+```
 
 ---
 
-📌 Developed by **Igor Pieralini**
+## 🐛 Dependencies
+- `mysql-connector-python` - Database connection
+- `PyYAML` - Configuration files
+- `requests` - API calls
+- `pycountry` - Country data
+
+---
+
+📏 **License:** MIT 🔓 | **Author:** Igor Pieralini

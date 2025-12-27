@@ -1,6 +1,5 @@
 import mysql.connector
 from app.utils.config import load_config
-from app.utils.logger import log_message
 
 def get_connection(database: str = None):
     """Cria e retorna uma conexão com o banco de dados."""
@@ -18,5 +17,4 @@ def get_connection(database: str = None):
         )
         return conn
     except mysql.connector.Error as e:
-        log_message(f"Erro conectando ao banco de dados: {e}", level="ERROR")
         raise

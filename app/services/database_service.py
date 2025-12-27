@@ -1,6 +1,5 @@
 import mysql.connector
 from app.utils.config import load_config
-from app.utils.logger import log_message
 from app.database.tables.countries import create_table as create_countries_table
 from app.database.tables.states import create_table as create_states_table
 from app.database.tables.cities import create_table as create_cities_table
@@ -21,7 +20,6 @@ def get_connection(database: str = None):
         )
         return conn
     except mysql.connector.Error as e:
-        log_message(f"Erro conectando ao banco de dados: {e}", level="ERROR")
         raise
 
 def create_database_if_not_exists():
@@ -44,10 +42,8 @@ def create_database_if_not_exists():
         conn.commit()
         cursor.close()
         conn.close()
-        log_message(f"Banco de dados '{db_name}' verificado/criado com sucesso.", level="INFO")
 
     except mysql.connector.Error as e:
-        log_message(f"Erro ao criar banco de dados: {e}", level="ERROR")
         raise
 
 class DatabaseService:
@@ -65,16 +61,13 @@ class DatabaseService:
             self.conn = get_connection()
             cursor = self.conn.cursor()
             
-            log_message("Criando tabelas...", level="INFO")
             create_countries_table(cursor)
             create_states_table(cursor)
             create_cities_table(cursor)
             
             self.conn.commit()
             cursor.close()
-            log_message("Banco de dados inicializado com sucesso.", level="INFO")
         except Exception as e:
-            log_message(f"Erro ao inicializar banco de dados: {e}", level="ERROR")
             raise
     
     def get_connection(self):
@@ -89,4 +82,3 @@ class DatabaseService:
 
         if self.conn:
             self.conn.close()
-            log_message("Conexão com o banco de dados encerrada.", level="INFO")

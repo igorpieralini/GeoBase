@@ -6,7 +6,6 @@ import pycountry
 
 from app.services.database_service import DatabaseService
 from app.database.connection import get_connection
-from app.utils.logger import log_message
 
 COUNTRIES_STATES_URL = "https://countriesnow.space/api/v0.1/countries/states"
 STATE_CITIES_URL = "https://countriesnow.space/api/v0.1/countries/state/cities"
@@ -17,9 +16,8 @@ def _safe_request(method: str, url: str, **kwargs) -> Optional[Dict]:
         resp = requests.request(method, url, timeout=30, **kwargs)
         if resp.status_code == 200:
             return resp.json()
-        log_message(f"HTTP {resp.status_code} ao acessar {url}", level="ERROR")
-    except Exception as e:
-        log_message(f"Erro de requisição em {url}: {e}", level="ERROR")
+    except Exception:
+        pass
     return None
 
 
@@ -86,7 +84,7 @@ def get_or_create_state(conn, country_id: int, name: str, code: Optional[str]) -
     return state_id
 
 
-def get_or_create_city(conn, state_id: int, name: str, code: Optional[str] = None) -> int:
+def get_or_create_city(conn, state_id: int, name: str) -> int:
     cursor = conn.cursor()
     cursor.execute("SELECT id FROM cities WHERE state_id=%s AND name=%s", (state_id, name))
     row = cursor.fetchone()
@@ -94,8 +92,8 @@ def get_or_create_city(conn, state_id: int, name: str, code: Optional[str] = Non
         cursor.close()
         return row[0]
     cursor.execute(
-        "INSERT INTO cities (state_id, name, code) VALUES (%s, %s, %s)",
-        (state_id, name, code),
+        "INSERT INTO cities (state_id, name) VALUES (%s, %s)",
+        (state_id, name),
     )
     conn.commit()
     city_id = cursor.lastrowid
@@ -104,12 +102,10 @@ def get_or_create_city(conn, state_id: int, name: str, code: Optional[str] = Non
 
 
 def import_all_locations():
-    log_message("Inicializando banco e tabelas...", level="INFO")
     DatabaseService().initialize()
 
     conn = get_connection()
     try:
-        log_message("Iniciando importação de países, estados e cidades...", level="INFO")
         for country in pycountry.countries:
             country_name = getattr(country, "name", None) or getattr(country, "official_name", None)
             country_code = getattr(country, "alpha_2", None)
@@ -117,11 +113,10 @@ def import_all_locations():
                 continue
 
             country_id = get_or_create_country(conn, country_name, country_code)
-            log_message(f"País processado: {country_name} ({country_code}) [id={country_id}]", level="INFO")
+            print(f"Processando país: {country_name}")
 
             states = get_states_for_country(country_name)
             if not states:
-                log_message(f"Nenhum estado encontrado para {country_name}.", level="DEBUG")
                 continue
 
             for st in states:
@@ -130,25 +125,18 @@ def import_all_locations():
                 if not state_name:
                     continue
                 state_id = get_or_create_state(conn, country_id, state_name, state_code)
-                log_message(f"  Estado: {state_name} [id={state_id}]", level="INFO")
 
                 cities = get_cities_for_state(country_name, state_name)
-                if not cities:
-                    log_message(f"    Nenhuma cidade encontrada para {state_name}.", level="DEBUG")
-                else:
+                if cities:
                     for city_name in cities:
                         get_or_create_city(conn, state_id, city_name)
-                    log_message(f"    {len(cities)} cidades inseridas/validadas para {state_name}.", level="INFO")
 
                 time.sleep(0.2)
 
-            # Pausa entre países
             time.sleep(0.2)
 
-        log_message("Importação concluída com sucesso.", level="INFO")
     finally:
         conn.close()
-        log_message("Conexão com o banco encerrada.", level="INFO")
 
 
 if __name__ == "__main__":
